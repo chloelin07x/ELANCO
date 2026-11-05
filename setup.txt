@@ -1,0 +1,70 @@
+DEPENDENCIES & SETUP
+==================================
+
+This file lists everything needed to run the project and how to configure
+the database and .env file. See README.md for the run commands.
+
+
+1. SYSTEM REQUIREMENTS
+----------------------
+- Node.js 18+ (with npm)        https://nodejs.org/
+- Python 3.9+                   https://www.python.org/downloads/
+- PostgreSQL 13+                https://www.postgresql.org/download/
+- Git (to clone the repository)
+
+
+2. BACKEND DEPENDENCIES (Python)
+--------------------------------
+Packages:
+    fastapi            web framework
+    uvicorn[standard]  server to run FastAPI
+    sqlalchemy         ORM / database toolkit
+    psycopg2-binary    PostgreSQL driver
+    python-dotenv      loads the .env file
+    (pydantic is installed automatically with fastapi)
+
+
+3. FRONTEND DEPENDENCIES (Node)
+-------------------------------
+Packages:
+    react, react-dom        UI library
+    react-router-dom        routing
+    react-leaflet, leaflet  interactive map
+    axios                   HTTP requests
+    tailwindcss             styling (v4)
+    @tailwindcss/vite       Tailwind plugin for Vite
+
+
+4. DATABASE SETUP (PostgreSQL)
+------------------------------
+Step 1 - Make sure PostgreSQL is installed and running.
+Step 2 - Create the database. Use the same name as in your .env file (see section below)
+Step 3 - Tables are created automatically because of models.Base.metadata.create_all()
+
+
+5. THE .env FILE
+----------------
+Create a file named exactly ".env" (with the leading dot) inside the backend/ folder
+
+Write:
+    DATABASE_URL=postgresql+psycopg2://USERNAME:PASSWORD@localhost/DATABASE_NAME
+
+
+6. RUNNING THE PROJECT
+----------------------
+Terminal 1 (backend):
+
+    cd backend
+    source venv/bin/activate
+    python -m uvicorn main:app --reload
+
+    -> http://127.0.0.1:8000
+
+Terminal 2 (frontend):
+
+    cd frontend
+    npm run dev
+
+    -> http://localhost:5173
+
+Open http://localhost:5173 in your browser
